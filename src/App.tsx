@@ -25,7 +25,7 @@ function App() {
   const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()));
 
   return (
-    <div className='coin-app'>
+    <div className='kak-coin'>
       <div className='coin-search'>
         {/* <h1 className="kakcoin">KAKCoin</h1> */}
         <h2 className='coin-text'>Search a currency</h2>
@@ -37,8 +37,15 @@ function App() {
             placeholder='Search'
           />
         </form>
-        <div className="table-name"></div>
+        
       </div>
+      <table className="table-name">
+          <th className="coin">Coin</th>
+          <th className="price">Price</th>
+          <th className="volume">24h Volume</th>
+          <th className="24H">24H Changes</th>
+          <th className="Market-cap">Market Cap</th>
+        </table>
       {filteredCoins.map(coin => {
         return (
           <Coin

@@ -9,7 +9,7 @@
   color: rgb(0, 0, 0);
 }
 
-.coin-app {
+.kak-coin {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +18,7 @@
 }
 
 .coin-search {
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,9 +50,15 @@
   color: #000000;
 }
 
-.kakcoin {
+/* .kakcoin {
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
   align-content: center;
+} */
+
+table{
+  text-align: left;
+  width: 100%;
 }
+
