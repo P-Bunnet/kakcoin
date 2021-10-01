@@ -3,20 +3,23 @@ import axios from 'axios';
 import './App.css';
 import Coin from './components/Coin';
 import { CurrencyData } from './components/DataInterface';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import Login from './components/Login';
 
 
 function App() {
   const [coins,setCoins] = useState<CurrencyData[]>([]);
   const [search,setSearch] = useState('')
-
   useEffect(()=>{
-    
-    axios.get<CurrencyData[]>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-      .then(res=> {
-        setCoins(res.data);
-        console.log(res.data);
-  })
-      .catch(error=> console.log(error));
+    const interval = setInterval(() => {
+      axios.get<CurrencyData[]>('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+      .then(res=> 
+        {setCoins(res.data);
+          // console.log(res.data);
+        }).catch(error=> console.log(error));
+    }, 1000);
+      return () => clearInterval(interval);
   },[]);
   
   //
@@ -48,39 +51,31 @@ function App() {
         <div>
           <img src="../popcat.gif" alt="logo" className='rounded-full flex items-center justify-center'/>
         </div>
-        <div>
-            <a href="" className='pr-4'>Log in</a>
-            <a href="" className='pr-4'>Sign up</a>
+        
+        <div className='flex justify-start'>
+        
+        <div className="search-box">
+          <button className="btn-search"><FontAwesomeIcon icon={faSearch}></FontAwesomeIcon></button>
+          <input type="text" className="input-search" placeholder="Type to Search..."/>
+          </div>
+        <div className='pl-5'><Login/></div>   
         </div>
 
     </div>
 </nav>
         </div> 
         {/* // end nav */}
-
-
-        <div className='text-center pt-6 pb-6'>
-          <h2 className='coin-text'>Search a currency</h2>
-        <form>
-          <input
-            className='border-2 border-black'
-            type='text'
-            onChange={handleChange}
-            placeholder='Search'
-          />
-        </form>
-        </div>
         
         
       </div>
       <div>
-      <table className='table=fixed min-w-full'>
-          <th className='w-4/12'>Coin</th>
-          <th className="w-1/8">Price</th>
-          <th className="w-1/8">24h Volume</th>
-          <th className="w-1/8">24H Changes</th>
-          <th className="w-1/8">Market Cap</th>
-        </table>
+      <div className='table pt-5'>
+          <th className='col-span-4'>Coin</th>
+          <th className="col-span-2 flex justify-start">Price</th>
+          <th className="col-span-2 flex justify-start">24h Volume</th>
+          <th className="col-span-2 flex justify-start">24H Changes</th>
+          <th className="col-span-2 flex justify-start">Market Cap</th>
+      </div>
       </div>
       <div>
       {filteredCoins.map(coin => {

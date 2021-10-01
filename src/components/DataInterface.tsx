@@ -26,3 +26,12 @@ export interface CurrencyData {
     total_supply: number,
     total_volume: number,
 }
+
+export interface ProfileData {
+    googleId: string,
+    imageUrl: string,
+    email: string,
+    name: string,
+    givenName: string,
+    familyName: string
+    }

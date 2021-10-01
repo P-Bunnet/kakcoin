@@ -1,16 +1,16 @@
 
   .coin-container {
-    @apply bg-white m-5 overflow-hidden rounded-2xl p-2 shadow-md max-w-full;
+ @apply bg-white m-5 overflow-hidden rounded-2xl p-2 shadow-md max-w-full;   
   }
   
-  .row {
+  /* .row {
     @apply flex flex-col justify-between md:flex-row ;
   }
   
   .coin {
     @apply flex justify-items-center  pr-6;
 
-  }
+  } */
   
   /* .coin h1 {
     font-size: 16px;
@@ -21,8 +21,11 @@
     @apply h-8 w-8 m-3;
   }
   
-  .coin-symbol {
+  /* .coin-symbol {
     text-transform: uppercase;
+  } */
+  
+  .table{
+    @apply grid grid-cols-12;
   }
-
   
