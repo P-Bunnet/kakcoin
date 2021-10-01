@@ -35,7 +35,7 @@ function Login() {
         setShowlogoutButton(false);
         setShowProfile(false);
     };
-    console.log(profileData); 
+    // console.log(profileData); 
 
 
 
