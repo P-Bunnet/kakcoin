@@ -1,8 +1,9 @@
 import React from 'react'
 import './Coin.css'
-
+import {Link} from 'react-router-dom';
 
 const Coin = ({
+    id,
     name,
     price,
     symbol,
@@ -10,7 +11,9 @@ const Coin = ({
     volume,
     image,
     priceChange
-  }:{name:string,
+  }:{
+    id:string
+    name:string,
     price:number,
     symbol:string,
     marketcap:number,
@@ -18,7 +21,7 @@ const Coin = ({
     image:string,
     priceChange:number|undefined}) => {
     return (
-      <div className='table coin-container'>
+      <Link to={'/coin/'+id} className='table coin-container'>
           {/* <table className='table-fixed'>
             <tr className='w-full'>
               <td className='w-4/12'>
@@ -57,7 +60,7 @@ const Coin = ({
               </div>
             <div className='col-span-2 flex justify-start'>${marketcap.toLocaleString()}</div>
 
-      </div>
+      </Link>
     );
   };
 
