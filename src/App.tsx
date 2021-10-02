@@ -5,14 +5,17 @@ import './App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import Login from './components/Login';
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route, Link, Switch} from "react-router-dom";
 import Home from './components/Home';
+import CoinDetail from './components/CoinDetail';
+import NotFound from './components/NotFound';
+
 
 function App() {
   
 
   return (
-    <BrowserRouter>
+    <BrowserRouter force>
     <div className='text-gray-600  bg-blue-100 '>
       
       <div>
@@ -49,10 +52,11 @@ function App() {
 </nav>
         </div> 
         {/* // end nav */} 
-
-
-        <Route path='/' component={Home} />
-
+        <Switch forceRefresh>
+        <Route path='/' component={Home} exact/>
+        <Route path='/coin/:id' component ={CoinDetail}/>
+        <Route component={NotFound}/>
+        </Switch>
 
       </div>
      
