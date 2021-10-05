@@ -21,6 +21,8 @@ const Coin = ({
   image: string;
   priceChange: number | undefined;
 }) => {
+
+
   return (
     <Link to={"/coin/" + id} className="table coin-container">
       {/* <table className='table-fixed'>
@@ -56,7 +58,7 @@ const Coin = ({
 
       <div className="col-span-2 flex justify-start">${price}</div>
       <div className="col-span-2 flex justify-start">
-        ${volume.toLocaleString()}
+        ${volume}
       </div>
       <div className="col-span-2 flex justify-start">
         {priceChange === undefined ? (
