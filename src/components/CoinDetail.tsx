@@ -2,13 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./CoinDetail.css";
 import axios from "axios";
 import { CoinDetails,description, coinImg } from "./DataInterface";
+import filteredCoins from "./Home";
 
 const CoinDetail = ({ match }) => {
   const [coinDetail, SetCoinDetail] = useState<CoinDetails[]>([]);
   const [coinDes, SetDes] = useState<description[]>([]);
   const [coinImg, SetImg] = useState<coinImg[]>([]);
   const c_id = match.params.id;
-  const Url: string = `https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+  const clog= match.params.id;
+  
+  console.log(clog);
+  
+  const Url: string = `http://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
   useEffect(() => {
     const interval = setInterval(() => {
       axios

@@ -11,6 +11,8 @@ import CoinDetail from "./components/CoinDetail";
 import NotFound from "./components/NotFound";
 
 function App() {
+
+
   return (
     <BrowserRouter force>
       <div className="text-gray-600  bg-blue-100 ">
