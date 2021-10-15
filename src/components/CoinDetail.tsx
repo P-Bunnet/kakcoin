@@ -13,7 +13,7 @@ const CoinDetail = ({ match }) => {
   
   console.log(clog);
   
-  const Url: string = `http://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+  const Url: string = `https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
   useEffect(() => {
     const interval = setInterval(() => {
       axios

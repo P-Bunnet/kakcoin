@@ -3,14 +3,14 @@ import Coin from "./Coin";
 import { CurrencyData } from "./DataInterface";
 import axios from "axios";
 
-const Home = () => {
+const Home = ({sendDataToParent}) => {
   const [coins, setCoins] = useState<CurrencyData[]>([]);
   const [search, setSearch] = useState("");
   useEffect(() => {
     const interval = setInterval(() => {
       axios
         .get<CurrencyData[]>(
-          "http://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+          "https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         )
         .then((res) => {
           setCoins(res.data);
