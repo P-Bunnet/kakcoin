@@ -36,7 +36,7 @@ const CoinDetail = ({ match }) => {
   }, [coinDetail]);
 
   //CoinPrice
-  const PriceUrl: string = `https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/simple/price?ids=${c_id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
+  const PriceUrl: string = `https://thingproxy.freeboard.io/fetch/https://api.coingecko.com/api/v3/simple/price?ids=${c_id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 
   useEffect(() => {
     const interval = setInterval(() => {
