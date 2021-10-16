@@ -96,3 +96,13 @@ export interface CoinDetails {
     small: string,
     large: string,
   };
+
+  export interface Price{
+    id: PriceDetail
+  };
+  export interface PriceDetail{
+    usd:number,
+    usd_market_cap:number,
+    usd_24h_vol:number,
+    usd_24h_change:number,
+  }
