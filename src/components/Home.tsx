@@ -10,7 +10,7 @@ const Home = ({sendDataToParent}) => {
     const interval = setInterval(() => {
       axios
         .get<CurrencyData[]>(
-          "https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+          "https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
         )
         .then((res) => {
           setCoins(res.data);

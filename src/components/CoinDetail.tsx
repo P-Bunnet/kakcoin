@@ -20,7 +20,8 @@ const CoinDetail = ({ match }) => {
   const c_id = match.params.id;
 
   //specific Data of Coin
-  const Url: string = `https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+  // const Url: string = `https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`;
+  const Url: string = `https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/coins/${c_id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
   useEffect(() => {
     const interval = setInterval(() => {
       axios
@@ -36,7 +37,7 @@ const CoinDetail = ({ match }) => {
   }, [coinDetail]);
 
   //CoinPrice
-  const PriceUrl: string = `https://thingproxy.freeboard.io/fetch/https://api.coingecko.com/api/v3/simple/price?ids=${c_id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
+  const PriceUrl: string = `https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/simple/price?ids=${c_id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 
   useEffect(() => {
     const interval = setInterval(() => {
