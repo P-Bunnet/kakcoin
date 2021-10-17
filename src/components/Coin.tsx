@@ -21,8 +21,6 @@ const Coin = ({
   image: string;
   priceChange: number | undefined;
 }) => {
-
-
   return (
     <Link to={"/coin/" + id} className="table coin-container">
       <div className="col-span-1 flex justify-start">
@@ -33,7 +31,10 @@ const Coin = ({
 
       <div className="col-span-2 flex justify-start">${price}</div>
       <div className="col-span-2 flex justify-start">
-        ${Number(volume).toLocaleString()}
+        {Number(volume).toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
       </div>
       <div className="col-span-2 flex justify-start">
         {priceChange === undefined ? (
@@ -45,7 +46,10 @@ const Coin = ({
         )}
       </div>
       <div className="col-span-2 flex justify-start">
-        ${Number(marketcap).toLocaleString()}
+        {Number(marketcap).toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+        })}
       </div>
     </Link>
   );

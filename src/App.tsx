@@ -18,8 +18,8 @@ function App() {
       <div className="text-gray-600  bg-blue-100 ">
         <div>
           {/* <h1 className="kakcoin">KAKCoin</h1> */}
-          <div>
-            <nav className="bg-red-400 px-4 p-4 md:bg-blue-600 text-white">
+          <div className="sticky top-0">
+            <nav className="bg-red-400 px-4 p-4 md:bg-blue-600 text-white ">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                 <Link to="/" className="pr-4 text-white">

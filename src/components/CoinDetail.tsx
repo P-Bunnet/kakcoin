@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactHtmlParser from 'react-html-parser';
 import "./CoinDetail.css";
 import axios from "axios";
 import {
@@ -105,7 +106,7 @@ const CoinDetail = ({ match }) => {
           <div className="col-span-2 pb-4">
             <h1 className="text-2xl font-bold">Description:</h1>
           </div>
-          <div className="col-span-2">{coinDes["en"]}</div>
+          <div className="col-span-2">{ReactHtmlParser(coinDes["en"])}</div>
         </div>
       </div>
     </div>
