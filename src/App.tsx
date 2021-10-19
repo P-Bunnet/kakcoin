@@ -15,7 +15,7 @@ function App() {
 
   return (
     <BrowserRouter force>
-      <div className="text-gray-600  bg-blue-100 ">
+      <div className="text-black-900  bg-blue-200 ">
         <div>
           {/* <h1 className="kakcoin">KAKCoin</h1> */}
           <div className="sticky top-0">

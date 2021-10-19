@@ -2,32 +2,54 @@ import React, { useState, useEffect } from "react";
 import Coin from "./Coin";
 import { CurrencyData } from "./DataInterface";
 import axios from "axios";
+import { setCoins } from "../redux/actions/coinActions";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
-const Home = ({sendDataToParent}) => {
-  const [coins, setCoins] = useState<CurrencyData[]>([]);
+const Home = ({ sendDataToParent }) => {
+  // const [coins, setCoins] = useState<CurrencyData[]>([]);
   const [search, setSearch] = useState("");
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     axios
+  //       .get<CurrencyData[]>(
+  //         "https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+  //       )
+  //       .then((res) => {
+  //         setCoins(res.data);
+  //         // console.log(res.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }, 1000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  const coin = useSelector((state:RootState) => state.allCoins.coins);
+  const dispatch = useDispatch();
+  const fetchCoins = async () => {
+    try {
+      const resp = await axios.get<CurrencyData[]>(
+        "https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      );
+      // console.log(resp.data);
+      dispatch(setCoins(resp.data));
+      
+    } catch (err) {
+      // Handle Error Here
+      console.error(err);
+    }
+  };
   useEffect(() => {
-    const interval = setInterval(() => {
-      axios
-        .get<CurrencyData[]>(
-          "https://lit-earth-60289.herokuapp.com/https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-        )
-        .then((res) => {
-          setCoins(res.data);
-          // console.log(res.data);
-        })
-        .catch((error) => console.log(error));
-    }, 1000);
-    return () => clearInterval(interval);
+    fetchCoins();
   }, []);
 
   //
   const handleChange = (e: any) => {
     setSearch(e.target.value);
   };
-  const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
+  // const filteredCoins = coins.filter((coin) =>
+  //   coin.name.toLowerCase().includes(search.toLowerCase())
+  // );
   return (
     <div>
       <div className="table pt-5">
@@ -39,21 +61,7 @@ const Home = ({sendDataToParent}) => {
       </div>
 
       <div>
-        {filteredCoins.map((coin) => {
-          return (
-            <Coin
-              key={coin.id}
-              id={coin.id}
-              name={coin.name}
-              price={coin.current_price}
-              symbol={coin.symbol}
-              marketcap={coin.market_cap}
-              volume={coin.total_supply}
-              image={coin.image}
-              priceChange={coin.price_change_percentage_24h}
-            />
-          );
-        })}
+        <Coin/>
       </div>
     </div>
   );
